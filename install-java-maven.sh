@@ -110,19 +110,6 @@ if [ $? -ne 0 ]; then
 fi
 echo "Maven 3.8.8 安装成功。"
 
-# 安装 Git
-echo "安装 Git..."
-yum install -y git
-
-# 验证 Git 安装
-echo "验证 Git 安装..."
-git --version
-if [ $? -ne 0 ]; then
-  echo "Git 安装失败。"
-  exit 1
-fi
-echo "Git 安装成功。"
-
 # 清理临时文件
 echo "清理临时文件..."
 rm -f /tmp/${JDK_PACKAGE} /tmp/${MAVEN_PACKAGE}
