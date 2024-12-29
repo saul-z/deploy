@@ -5,7 +5,19 @@
 ssh-keygen -t rsa -b 4096 -C "2024.12香港服务器"
 cat ~/.ssh/id_rsa.pub
 ssh -T git@gitee.com
-git clone git@gitee.com:proyunz/deploy.git
+git clone git@github.com:saul-z/deploy.git
+```
+
+## 镜像源
+阿里镜像：https://developer.aliyun.com/mirror/
+```bash
+mv /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo.backup
+
+wget -O /etc/yum.repos.d/CentOS-Base.repo https://mirrors.aliyun.com/repo/Centos-7.repo
+
+yum clean all
+
+yum makecache
 ```
 
 ## 安装java、maven
@@ -33,10 +45,16 @@ UPDATE mysql.user SET Host = '%' WHERE User = 'root' AND Host = 'localhost';
 FLUSH PRIVILEGES;
 ```
 3.SELinux 机制
+```bash
 vi /etc/selinux/config 设置SELINUX=disabled
 setenforce 0
 sestatus
+```
+
 4.修改配置文件
+```bash
 vi /etc/my.cnf
 port=3307
 sudo systemctl restart mysqld
+```
+
