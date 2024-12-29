@@ -2,7 +2,7 @@
 
 # 配置项
 PROJECT_DIR="/root/project"  # 替换为你的项目路径
-GIT_REPO="git@gitee.com:proyunz/core.git"
+GIT_REPO="git@github.com:saul-z/core.git"
 JAR_NAME="core.jar"
 MAVEN_CMD="mvn clean package -DskipTests"  # 可根据需要调整 Maven 命令
 JAVA_CMD="nohup java -jar ${JAR_NAME} > /dev/null 2>&1 &"
