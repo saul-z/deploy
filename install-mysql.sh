@@ -62,10 +62,15 @@ setup_mysql_repo() {
     fi
 
     echo "安装 MySQL YUM 仓库配置包..."
-    rpm -Uvh "$MYSQL_RPM" || {
-        echo "安装 MySQL 仓库配置包失败。"
-        exit 1
-    }
+
+    if rpm -qa | grep -q 'mysql84-community-release-el7-1'; then
+        echo "MySQL YUM 仓库配置包已安装，跳过。"
+    else
+        rpm -Uvh "$MYSQL_RPM" || {
+                echo "安装 MySQL 仓库配置包失败。"
+                exit 1
+            }
+    fi
     echo "MySQL 仓库配置完成。"
 }
 
