@@ -36,6 +36,10 @@ source ~/.bashrc
 测试配置 nginx -t
 systemctl restart nginx / nginx -s reload
 
+nginx -V 查看编译选项
+--prefix=/usr/share/nginx，这意味着默认的HTML目录应该是 /usr/share/nginx/html/
+--error-log-path=/var/log/nginx/error.log 
+
 ## ssl配置
 只安装基本的 certbot
 sudo yum -y install certbot
