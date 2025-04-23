@@ -21,6 +21,14 @@ yum makecache
 ```
 
 ## 编码问题
+设置locale
+```
+echo "export LANG=en_US.UTF-8" >> ~/.bashrc
+source ~/.bashrc
+```
+
+
+
 
 ## nginx
 测试配置 nginx -t
@@ -33,6 +41,10 @@ sudo yum -y install certbot
 使用 standalone 模式生成证书（记得先停止 nginx）
 sudo systemctl stop nginx
 sudo certbot certonly --standalone -d yunfire.com -d www.yunfire.com
+
+设置自动续期：
+添加一个 cron 任务来自动续期证书（每天尝试一次，但只有在证书快过期时才会真正更新）：
+bashecho "0 3 * * * root certbot renew --quiet" | sudo tee -a /etc/crontab
 
 
 ## 安装java、maven
