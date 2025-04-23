@@ -20,6 +20,21 @@ yum clean all
 yum makecache
 ```
 
+## 编码问题
+
+## nginx
+测试配置 nginx -t
+systemctl restart nginx / nginx -s reload
+
+## ssl配置
+只安装基本的 certbot
+sudo yum -y install certbot
+
+使用 standalone 模式生成证书（记得先停止 nginx）
+sudo systemctl stop nginx
+sudo certbot certonly --standalone -d yunfire.com -d www.yunfire.com
+
+
 ## 安装java、maven
 1.运行脚本
 ./install-java-maven.sh
@@ -57,4 +72,6 @@ vi /etc/my.cnf
 port=3307
 sudo systemctl restart mysqld
 ```
+
+
 
