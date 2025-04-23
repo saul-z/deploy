@@ -23,12 +23,14 @@ yum makecache
 ## 编码问题
 设置locale
 ```
+sudo echo 'LANG=en_US.UTF-8' > /etc/locale.conf
+sudo echo 'LC_ALL=en_US.UTF-8' >> /etc/locale.conf
+```
+
+```
 echo "export LANG=en_US.UTF-8" >> ~/.bashrc
 source ~/.bashrc
 ```
-
-
-
 
 ## nginx
 测试配置 nginx -t
