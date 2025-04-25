@@ -58,3 +58,21 @@ port=3307
 sudo systemctl restart mysqld
 ```
 
+## 运维
+1. df -h;free -h;
+2. ps -ef | grep java
+3. kill pid
+4. mysql修改密码
+停止MySQL服务
+sudo /usr/local/mysql/support-files/mysql.server stop
+以跳过授权认证模式登录MySQL
+sudo /usr/local/mysql/bin/mysqld_safe --skip-grant-tables &
+重置密码
+mysql -u root
+use mysql;
+FLUSH PRIVILEGES;
+ALTER USER 'root'@'localhost' IDENTIFIED BY 'new password';
+FLUSH PRIVILEGES;
+重启MySQL服务
+sudo /usr/local/mysql/support-files/mysql.server start
+
