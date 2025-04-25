@@ -20,6 +20,39 @@ yum clean all
 yum makecache
 ```
 
+## 编码问题
+设置locale
+```
+sudo echo 'LANG=en_US.UTF-8' > /etc/locale.conf
+sudo echo 'LC_ALL=en_US.UTF-8' >> /etc/locale.conf
+```
+
+```
+echo "export LANG=en_US.UTF-8" >> ~/.bashrc
+source ~/.bashrc
+```
+
+## nginx
+测试配置 nginx -t
+systemctl restart nginx / nginx -s reload
+
+nginx -V 查看编译选项
+--prefix=/usr/share/nginx，这意味着默认的HTML目录应该是 /usr/share/nginx/html/
+--error-log-path=/var/log/nginx/error.log 
+
+## ssl配置
+只安装基本的 certbot
+sudo yum -y install certbot
+
+使用 standalone 模式生成证书（记得先停止 nginx）
+sudo systemctl stop nginx
+sudo certbot certonly --standalone -d yunfire.com -d www.yunfire.com
+
+设置自动续期：
+添加一个 cron 任务来自动续期证书（每天尝试一次，但只有在证书快过期时才会真正更新）：
+bashecho "0 3 * * * root certbot renew --quiet" | sudo tee -a /etc/crontab
+
+
 ## 安装java、maven
 1.运行脚本
 ./install-java-maven.sh
