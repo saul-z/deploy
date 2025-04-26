@@ -4,6 +4,8 @@
 ```bash
 ssh-keygen -t rsa -b 4096 -C "2024.12香港服务器"
 cat ~/.ssh/id_rsa.pub
+ssh-copy-id username@remote_host  #将本地的公钥追加到远程服务器的~/.ssh/authorized_keys文件中
+ssh-keyscan example.com #ssh-keyscan 是一个工具，用于从远程主机收集 SSH 公钥（host keys）
 ssh -T git@gitee.com
 git clone git@github.com:saul-z/deploy.git
 ```
@@ -96,6 +98,7 @@ sudo systemctl restart mysqld
 2. ps -ef | grep java
 3. kill pid
 4. mysql修改密码
+5. curl cip.cc  ip地址查询
 停止MySQL服务
 sudo /usr/local/mysql/support-files/mysql.server stop
 以跳过授权认证模式登录MySQL
