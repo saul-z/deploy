@@ -112,3 +112,16 @@ FLUSH PRIVILEGES;
 重启MySQL服务
 sudo /usr/local/mysql/support-files/mysql.server start
 
+# 设置Linux环境变量
+创建或编辑服务文件：
+1. vim /etc/profile.d/mydevenv.sh
+2. 
+```bash
+#!/bin/bash
+export SPRING_DATASOURCE_URL="jdbc:mysql://xxx.com:3306/database?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai&allowMultiQueries=true"
+export SPRING_DATASOURCE_USERNAME="name"
+export SPRING_DATASOURCE_PASSWORD="password"
+```
+3. chmod +x /etc/profile.d/mydevenv.sh
+4. source /etc/profile.d/mydevenv.sh
+
